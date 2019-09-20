@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MotivoreservacionEditDlg" widgetVar="MotivoreservacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMotivoreservacionTitle}">
+            <h:form id="MotivoreservacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{motivoreservacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMotivoreservacionLabel_idmotivoreservacion}" for="idmotivoreservacion" />
+                        <p:inputText id="idmotivoreservacion" value="#{motivoreservacionController.selected.idmotivoreservacion}" title="#{bundle.EditMotivoreservacionTitle_idmotivoreservacion}" required="true" requiredMessage="#{bundle.EditMotivoreservacionRequiredMessage_idmotivoreservacion}"/>
+                        <p:outputLabel value="#{bundle.EditMotivoreservacionLabel_aniversario}" for="aniversario" />
+                        <p:inputText id="aniversario" value="#{motivoreservacionController.selected.aniversario}" title="#{bundle.EditMotivoreservacionTitle_aniversario}" required="true" requiredMessage="#{bundle.EditMotivoreservacionRequiredMessage_aniversario}"/>
+                        <p:outputLabel value="#{bundle.EditMotivoreservacionLabel_cumpleaños}" for="cumpleaños" />
+                        <p:inputText id="cumpleaños" value="#{motivoreservacionController.selected.cumpleaños}" title="#{bundle.EditMotivoreservacionTitle_cumpleaños}" required="true" requiredMessage="#{bundle.EditMotivoreservacionRequiredMessage_cumpleaños}"/>
+                        <p:outputLabel value="#{bundle.EditMotivoreservacionLabel_boda}" for="boda" />
+                        <p:inputText id="boda" value="#{motivoreservacionController.selected.boda}" title="#{bundle.EditMotivoreservacionTitle_boda}" required="true" requiredMessage="#{bundle.EditMotivoreservacionRequiredMessage_boda}"/>
+                        <p:outputLabel value="#{bundle.EditMotivoreservacionLabel_graduacion}" for="graduacion" />
+                        <p:inputText id="graduacion" value="#{motivoreservacionController.selected.graduacion}" title="#{bundle.EditMotivoreservacionTitle_graduacion}" required="true" requiredMessage="#{bundle.EditMotivoreservacionRequiredMessage_graduacion}"/>
+                        <p:outputLabel value="#{bundle.EditMotivoreservacionLabel_otro}" for="otro" />
+                        <p:inputText id="otro" value="#{motivoreservacionController.selected.otro}" title="#{bundle.EditMotivoreservacionTitle_otro}" required="true" requiredMessage="#{bundle.EditMotivoreservacionRequiredMessage_otro}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{motivoreservacionController.update}" value="#{bundle.Save}" update="display,:MotivoreservacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MotivoreservacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MotivoreservacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
